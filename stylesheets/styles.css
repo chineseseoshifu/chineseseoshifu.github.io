@@ -188,8 +188,10 @@ footer {
 }
 
 #mascot > img {
-  width: 40%;
-  border-radius: 100%;
+  width: 25%;
+  border-radius: 100%; 
+  float: left;
+  margin-right: 10px;
 }
 
 @media print, screen and (max-width: 960px) {
