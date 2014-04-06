@@ -201,7 +201,6 @@ footer {
   color: white;
   background-color: #39c;
   border-radius: 5px;
-  font-weight: 700;
 }
 
 @media print, screen and (max-width: 960px) {
