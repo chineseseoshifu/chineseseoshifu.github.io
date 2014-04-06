@@ -183,6 +183,15 @@ footer {
   bottom:50px;
 }
 
+#mascot {
+  text-align: center;
+}
+
+#mascot > img {
+  width: 40%;
+  border-radius: 100%;
+}
+
 @media print, screen and (max-width: 960px) {
   
   div.wrapper {
