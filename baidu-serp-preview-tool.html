@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  <title>
+    Baidu SERP Preview Tool by Chinese SEO Shifu
+  </title>
+  <meta name="description" content="This tool helps you preview what your Chinese page title and meta description will look like in Baidu's search result pages."/>
+
+  <link href='http://fonts.googleapis.com/css?family=Roboto:700,400,300' rel='stylesheet' type='text/css'>
+  <style type="text/css">
+    body {
+      font-family: 'Roboto', sans-serif;
+      padding: 40px; 
+      background-color: #19bb9b;
+    }
+    .site-title {
+        font-size:18px;
+        color: rgb(0, 0, 204);
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 100%;
+        display: block;
+        overflow: hidden;
+        text-decoration: underline; 
+      }
+      .site-url {
+        font-size:13px;
+        color: #008000;
+        width: 510px;
+        margin-top: 2px;
+      }
+      .site-desc {
+        font-size:13px;
+        color: #545454;
+        width: 510px;
+        margin-top: 2px;
+        line-height: 18px; 
+      }
+      #header h1 {
+        font-size: 2em;
+      }
+  </style>
+  <script async="" type="text/javascript">
+    String.prototype.strLen = function() {
+        var len = 0;
+        for (var i = 0; i < this.length; i++) {
+            if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0) len += 2; else len ++;
+        }
+        return len;
+    }
+
+    String.prototype.strToChars = function(){
+        var chars = new Array();
+        for (var i = 0; i < this.length; i++){
+            chars[i] = [this.substr(i, 1), this.isCHS(i)];
+        }
+        String.prototype.charsArray = chars;
+        return chars;
+    }
+     
+    String.prototype.isCHS = function(i){
+        if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0) 
+            return true;
+        else
+            return false;
+    }
+
+    String.prototype.subCHString = function(start, end){
+        var len = 0;
+        var str = "";
+        this.strToChars();
+        for (var i = 0; i < this.length; i++) {
+            if(this.charsArray[i][1])
+                len += 2;
+            else
+                len++;
+            if (end < len)
+                return str;
+            else if (start < len)
+                str += this.charsArray[i][0];
+        }
+        return str;
+    }
+
+    String.prototype.subCHStr = function(start, length){
+        return this.subCHString(start, start + length);
+    }
+    String.prototype.trim = function()
+    {
+      return this.replace(/(^\s*)|(\s*$)/g, "");
+    }
+      function showSerp()
+    {
+      var raw_title = document.getElementById('your-title').value;
+      var title = raw_title.trim().subCHStr(0, 60);
+      var raw_desc = document.getElementById('your-desc').value;
+      var desc = raw_desc.trim().subCHStr(0, 158);
+      
+      document.getElementById("show-title").innerHTML = title;
+      document.getElementById("show-desc").innerHTML = desc;
+    }
+  </script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-25431180-9', 'chineseseoshifu.com');
+  ga('send', 'pageview');
+
+</script>
+  </head>
+  <body>
+    
+    <div id="header" style="width: 526px; margin: 0 auto 50px; text-align: center; color: white; border: solid 2px white;"><h1>Baidu SERP Preview Tool</h1></div>
+    <div style="padding: 40px; border-radius: 10px; background-color: white; width: 626px;
+margin: 0 auto;">
+  <div>
+    <strong style="color: #19bb9b;">
+      Enter Your Full Title Text:
+    </strong>
+    <br>
+    <input type="text" id="your-title" style="width: 620px; height: 30px;
+margin: 10px 0; border-radius: 5px; font-size: 16px; border: 2px solid #eeeeee;">
+  </div>
+  <div>
+    <strong style="color: #19bb9b;">
+      Enter Your Full Description:
+    </strong>
+    <br>
+    <textarea id="your-desc" style="width: 620px; height: 130px;
+margin: 10px 0; border-radius: 5px;font-size: 16px; border: 2px solid #eeeeee;"></textarea>
+  </div>
+  <div>
+    <input class="button" name="submit" type="submit" value="GENERATE" style="font-size: 16px" onclick="showSerp(); return false;">
+  </div>
+  <div style="width: 600px; margin: 24px 0 12px 0; padding: 12px; border: solid 2px #eeeeee; background-color: #ffffff; border-radius: 5px;">
+    <div class="site-title" id="show-title">
+    你好，这是临时标题
+    </div>
+    <div class="site-desc" id="show-desc">
+      这是临时描述，这是临时描述，这是临时描述，这是临时描述，这是临时描述，这是临时描述，这是临时描述，这是临时描述，这是临时描述，这是临时描述，这是临时描述，这是
+      <strong>
+        ...
+      </strong>
+    </div>
+    <div class="site-url">
+      www.your-site.com/your-page 2046-01-01
+    </div>
+  </div>
+  </div>
+  
+  
+  </body>
+</html>
